@@ -1,0 +1,10 @@
+"use client";
+import Link from "next/link";
+import { useRouter } from "next/navigation";
+import { ArrowRight, Sparkles } from "lucide-react";
+import { Input } from "@/components/ui/input";
+import { Button } from "@/components/ui/button";
+export default function Login(){
+  const router=useRouter();
+  return <div className="grid min-h-screen lg:grid-cols-2"><div className="hidden bg-slate-950 p-10 text-white lg:flex lg:flex-col lg:justify-between"><div className="flex items-center gap-2"><div className="grid h-9 w-9 place-items-center rounded-xl bg-blue-600"><Sparkles className="h-5 w-5"/></div><b>Lead Finder</b></div><div><p className="max-w-lg text-4xl font-bold tracking-tight">Find businesses that need your services.</p><p className="mt-4 max-w-md text-slate-400">Discover local businesses, verify their online presence, and prioritize high-value opportunities.</p></div><p className="text-xs text-slate-500">© 2026 Lead Finder</p></div><div className="flex items-center justify-center p-6"><div className="w-full max-w-md"><div className="mb-8 lg:hidden flex items-center gap-2"><div className="grid h-9 w-9 place-items-center rounded-xl bg-blue-600 text-white"><Sparkles className="h-5 w-5"/></div><b>Lead Finder</b></div><h1 className="text-2xl font-bold">Welcome back</h1><p className="mt-2 text-sm text-slate-500">Sign in to continue to your workspace.</p><form onSubmit={(e)=>{e.preventDefault();router.push("/dashboard")}} className="mt-7 space-y-4"><div><label className="mb-1.5 block text-sm font-medium">Email</label><Input type="email" placeholder="you@company.com" required/></div><div><label className="mb-1.5 block text-sm font-medium">Password</label><Input type="password" placeholder="••••••••" required/></div><Button variant="primary" className="w-full">Sign in <ArrowRight className="h-4 w-4"/></Button></form><p className="mt-6 text-center text-sm text-slate-500">Don't have an account? <Link className="font-semibold text-blue-600" href="/signup">Create one</Link></p></div></div></div>;
+}

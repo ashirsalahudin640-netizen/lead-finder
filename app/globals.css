@@ -1,0 +1,31 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+:root { --background: 210 40% 98%; --foreground: 222 47% 11%; --card: 0 0% 100%; --card-foreground: 222 47% 11%; --muted: 210 40% 96%; --muted-foreground: 215 16% 47%; --border: 214 32% 91%; --input: 214 32% 91%; --ring: 221 83% 53%; --primary: 221 83% 53%; --primary-foreground: 210 40% 98%; }
+* { border-color: hsl(var(--border)); }
+html { scroll-behavior: smooth; }
+body { margin: 0; background: radial-gradient(circle at 50% -10%, rgba(59,130,246,.06), transparent 34rem), hsl(var(--background)); color: hsl(var(--foreground)); font-feature-settings: "rlig" 1, "calt" 1; }
+button, input, select { font: inherit; }
+button, a { -webkit-tap-highlight-color: transparent; }
+::selection { background: hsl(var(--primary) / .16); }
+
+@keyframes fade-up { from { opacity: 0; transform: translateY(10px); } to { opacity: 1; transform: translateY(0); } }
+@keyframes float { 0%,100% { transform: translate3d(0,0,0); } 50% { transform: translate3d(0,-10px,0); } }
+@keyframes pulse-soft { 0%,100% { opacity: .45; transform: scale(1); } 50% { opacity: .8; transform: scale(1.04); } }
+
+@layer utilities {
+  .text-balance { text-wrap: balance; }
+  .animate-fade-up { animation: fade-up .55s cubic-bezier(.22,1,.36,1) both; }
+  .table-row-animate { animation: fade-up .35s ease both; }
+  .card-hover { transition: transform .3s cubic-bezier(.22,1,.36,1), box-shadow .3s ease, border-color .3s ease; }
+  .card-hover:hover { transform: translateY(-3px); box-shadow: 0 16px 40px rgba(15,23,42,.08); border-color: rgba(148,163,184,.65); }
+  .hero-gradient { background: linear-gradient(135deg, #eff6ff 0%, #ffffff 48%, #f8fafc 100%); }
+  .hero-orb { position: absolute; border-radius: 9999px; pointer-events: none; filter: blur(1px); animation: float 7s ease-in-out infinite; }
+  .hero-orb-one { right: -5rem; top: -7rem; width: 18rem; height: 18rem; background: rgba(96,165,250,.14); }
+  .hero-orb-two { right: 20%; bottom: -9rem; width: 15rem; height: 15rem; background: rgba(129,140,248,.09); animation-delay: -2.5s; }
+}
+
+@media (prefers-reduced-motion: reduce) {
+  *, *::before, *::after { scroll-behavior: auto !important; animation-duration: .01ms !important; animation-iteration-count: 1 !important; transition-duration: .01ms !important; }
+}
